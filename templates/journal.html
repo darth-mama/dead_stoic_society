@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal</title>
+</head>
+<body>
+    <h1>Meditations by {{ user }}</h1>
+    <div id="quote-container">
+        <p id="quote">{{ quote }}</p>
+        <form action="/get_quote" method="get">
+            <button type="submit">Get Another Quote</button>
+        </form>
+    </div>
+
+</body>
+</html>
