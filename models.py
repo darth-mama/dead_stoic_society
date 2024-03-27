@@ -1,6 +1,6 @@
 
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_bcrypt import bcrypt
 
 db = SQLAlchemy()
 
@@ -39,3 +39,22 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"
+
+    @classmethod
+    def signup(cls, username: str, email: str, password: str, image_url: str) -> 'User':
+        """Sign up user.
+
+        Hashes password and adds user to system.
+        """
+
+        hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
+
+        user = User(
+            username=username,
+            email=email,
+            password=hashed_pwd,
+            image_url=image_url,
+        )
+
+        db.session.add(user)
+        return user
