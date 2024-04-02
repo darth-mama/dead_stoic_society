@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Bradley+Hand&display=swap');
+
+
+body {
+    font-family: 'Sentinel', serif;
+    background-color: #d3e3a3; /* Set background color */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+#quote-container {
+    text-align: center;
+}
+
+#quote {
+    font-style: italic;
+}
+
+#entry-form {
+    text-align: center;
+}
+
+#entry-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#entry-form button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Set button color */
+    color: #fff; /* Set button text color */
+    border: none;
+    cursor: pointer;
+}
+
+#entry-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#entry-list li {
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#entry-list li:last-child {
+    margin-bottom: 0;
+}
+
+.entry-text {
+    font-family: 'Bradley Hand', cursive; /* Apply Bradley Hand font to entry text */
+}
+
+
+#image-container {
+    background-color: #122623; /* Set brownish orange background color */
+    text-align: center; /* Center-align the content */
+    padding: 20px 0; /* Add padding for spacing */
+}
+
+#image-container img {
+    max-width: 25%; /* Shrink image to 50% of its original size */
+    display: inline-block; /* Set image display to inline-block */
+}

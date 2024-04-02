@@ -1,4 +1,58 @@
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Journal</title>
+</head>
+<body>
+    <!-- Image container -->
+<div id="image-container">
+    <img src="https://letsgethappi.com/wp-content/uploads/2024/02/MARCUS-AURELIUS-AND-THE-STOIC-WAY-OF-LIFE.jpg" alt="Stoic Image">
+</div>
+
+    <h1>Welcome to Your Journal</h1>
+
+    {% if user %}
+    <h2> Meditations by {{ user.username }}!</h2>
+
+    <!-- Display the latest quote -->
+    <div>
+        <p>Here's a Stoic quote for you:</p>
+        <blockquote>{{ quote }}</blockquote>
+    </div>
+
+    <!-- Form to submit new entry -->
+    <form action="/submit_entry" method="POST">
+        <textarea name="entry_text" rows="4" cols="50" placeholder="Write your entry here..."></textarea><br>
+        <button type="submit">Submit Entry</button>
+    </form>
+
+    <!-- Display submitted entries -->
+    <h3>Your Entries:</h3>
+    <ul>
+        {% for entry in user.entries %}
+        <li class="entry-text">{{ entry.text }}</li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+    <p>You need to log in to access the journal.</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +60,7 @@
     <title>Journal</title>
 </head>
 <body>
-    <h1>Meditations by {{ user }}</h1>
+    <h1>Meditations by {{ user.username }}</h1>
     <div id="quote-container">
         <p id="quote">{{ quote }}</p>
         <form action="/submit_entry" method="post" id="journal-form">
@@ -17,4 +71,4 @@
         </form>
 
 </body>
-</html>
+</html> -->

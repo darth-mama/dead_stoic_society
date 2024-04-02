@@ -1,7 +1,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import bcrypt
-
+from datetime import datetime
 db = SQLAlchemy()
 
 
@@ -37,6 +37,9 @@ class User(db.Model):
         nullable=False,
     )
 
+    entries = db.relationship('Entry', backref='author',
+                              cascade='all, delete-orphan')
+
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"
 
@@ -57,4 +60,35 @@ class User(db.Model):
         )
 
         db.session.add(user)
+        db.session.commit()
         return user
+
+
+class Entry(db.Model):
+    """A journal entry submitted by a user"""
+
+    __tablename__ = 'entries'
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+    )
+
+    text = db.Column(
+        db.String(1000),
+        nullable=False,
+    )
+
+    timestamp = db.Column(
+        db.DateTime,
+        nullable=False,
+        default=datetime.utcnow(),
+    )
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+
+    user = db.relationship('User')

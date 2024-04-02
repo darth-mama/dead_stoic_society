@@ -1,0 +1,12 @@
+body {
+    background-color: #f7d0cd; /* Set background color */
+}
+
+#image-container {
+    text-align: center; /* Center-align the content */
+    padding: 20px 0; /* Add padding for spacing */
+}
+
+#image-container img {
+    max-width: 50%; /* Shrink image to 50% of its original size */
+}
